@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  activemq:
+    container_name: activemq-${targetEnvironment}
+    restart: unless-stopped
+    image: harbor.primobox.net/docker/activemq:2.21.0
+    ports:
+      - ${consolePort}:8161
+      - ${queuePort}:61616
+      - ${jmxPort}:${jmxPort}
+      - ${jmxRmiPort}:${jmxRmiPort}
+      - ${localPort}:61625
+    environment:
+      - ARTEMIS_USERNAME=${username}
+      - ARTEMIS_PASSWORD=${password}
+      - ENABLE_JMX=true
+      - JMX_PORT=${jmxPort}
+      - JMX_RMI_PORT=${jmxRmiPort}
+      - JAVA_OPTS=${java_opts}
+    healthcheck:
+      test: [ CMD, nc, -zv, 127.0.0.1, '8161' ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    deploy:
+      resources:
+        limits:
+          memory: ${memory}
