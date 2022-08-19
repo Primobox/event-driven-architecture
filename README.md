@@ -8,7 +8,7 @@ L'application permet :
 
 * de s'inscrire via un login
 * de liker (ou pas) un autre login inscrit sur la plateforme
-** chaque like génère un match partiel
-** quand deux matchs partiels se rencontrent, cela crée un match complet
+  * chaque like génère un match partiel
+  * quand deux matchs partiels se rencontrent, cela crée un match complet
 * de consulter le résultat de ses matchs
 
