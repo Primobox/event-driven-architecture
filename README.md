@@ -12,3 +12,4 @@ L'application permet :
   * quand deux matchs partiels se rencontrent, cela crée un match complet
 * de consulter le résultat de ses matchs
 
+![image](https://user-images.githubusercontent.com/51753/185647435-0d2dae5a-e6aa-410e-888c-e1ebc66f4b7b.png)
