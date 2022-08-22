@@ -7,10 +7,11 @@ import com.primobox.eventdrivenarchitecture.commun.usecases.UseCase;
 import com.primobox.eventdrivenarchitecture.inscriptions.domaine.Celibataire;
 import com.primobox.eventdrivenarchitecture.inscriptions.domaine.Celibataires;
 import com.primobox.eventdrivenarchitecture.inscriptions.domaine.evenements.InscriptionRealisee;
-import org.springframework.stereotype.Component;
+import com.primobox.eventdrivenarchitecture.inscriptions.domaine.irregularites.CelibataireDejaInscrit;
 
-@Component
-public class Inscription implements UseCase<Inscription.SInscrire, ResultatDeCommande<Evenement, Exception>> {
+import static com.primobox.eventdrivenarchitecture.inscriptions.usecases.Inscription.SInscrire;
+
+public class Inscription implements UseCase<SInscrire, ResultatDeCommande<Evenement, CelibataireDejaInscrit>> {
 
     private Celibataires celibataires;
 
@@ -19,11 +20,11 @@ public class Inscription implements UseCase<Inscription.SInscrire, ResultatDeCom
     }
 
     @Override
-    public ResultatDeCommande<Evenement, Exception> executer(SInscrire commande) {
+    public ResultatDeCommande<Evenement, CelibataireDejaInscrit> executer(SInscrire commande) {
         try {
             celibataires.ajouter(new Celibataire(commande.login()));
             return ResultatDeCommande.succes(new InscriptionRealisee(commande.login()));
-        } catch (Exception exception) {
+        } catch (CelibataireDejaInscrit exception) {
             return ResultatDeCommande.echec(exception);
         }
     }
