@@ -29,7 +29,7 @@ public class InscriptionsRestController {
 
     @PostMapping
     public ResponseEntity<String> sinscrire(@RequestBody CelibataireDto celibataire, UriComponentsBuilder uriComponentsBuilder) {
-        var resultatDeLInscription = this.inscription.executer(new SInscrire(celibataire.login()));
+        var resultatDeLInscription  = this.inscription.executer(new SInscrire(celibataire.login()));
         if (resultatDeLInscription.isFailure()) {
             return ResponseEntity.badRequest().body(format("Le login {0} est déjà inscrit", celibataire.login()));
         }

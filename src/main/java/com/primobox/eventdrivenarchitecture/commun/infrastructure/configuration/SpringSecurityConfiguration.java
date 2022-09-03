@@ -20,6 +20,8 @@ public class SpringSecurityConfiguration {
                 .and()
                 .cors()
                 .and()
+                .csrf()
+                .disable()
                 .httpBasic()
                 .and()
                 .build();
