@@ -27,8 +27,8 @@ public class EntremettageTest {
     private Celibataires celibataires;
 
     @Test
-    void doit_creer_une_rencontre_avec_tous_les_celibataires_de_la_plateforme_lors_de_l_inscription() throws InterruptedException {
-        ilExisteDejaLesCelibataires("tartampionDu24", "choupinou28", "tonton33", "zouzoudumedoc", "damidoudu64");
+    void doit_creer_une_rencontre_avec_tous_les_celibataires_de_la_plateforme_lors_de_l_inscription() {
+        etantDonneLesCelibatairesInscrits("tartampionDu24", "choupinou28", "tonton33", "zouzoudumedoc", "damidoudu64");
 
         emetteurDEvenementsDuDomaine.emettre(new InscriptionRealisee("grosdoudou33"));
 
@@ -42,7 +42,7 @@ public class EntremettageTest {
         );
     }
 
-    private void ilExisteDejaLesCelibataires(String... loginsDesCelibataires) {
+    private void etantDonneLesCelibatairesInscrits(String... loginsDesCelibataires) {
         for (String loginDuCelibataire : loginsDesCelibataires) {
             celibataires.ajouter(new Celibataire(loginDuCelibataire));
         }

@@ -6,7 +6,9 @@ import com.primobox.eventdrivenarchitecture.inscriptions.domaine.irregularites.C
 import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Repository
 public class CelibatairesEnMemoire implements Celibataires {
@@ -19,5 +21,13 @@ public class CelibatairesEnMemoire implements Celibataires {
             throw new CelibataireDejaInscrit();
         }
         this.celibataires.add(celibataire.login());
+    }
+
+    @Override
+    public Set<Celibataire> inscrits() {
+        return this.celibataires
+                .stream()
+                .map(Celibataire::new)
+                .collect(Collectors.toSet());
     }
 }

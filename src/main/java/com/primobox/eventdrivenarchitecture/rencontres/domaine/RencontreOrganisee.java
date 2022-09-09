@@ -1,6 +1,6 @@
 package com.primobox.eventdrivenarchitecture.rencontres.domaine;
 
-public class RencontreOrganisee implements Rencontre {
+public record RencontreOrganisee(String celibataire1, String celibataire2) implements Rencontre {
     @Override
     public boolean estOrganisee() {
         return true;

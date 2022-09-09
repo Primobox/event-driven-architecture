@@ -5,18 +5,21 @@ import com.primobox.eventdrivenarchitecture.commun.infrastructure.mom.Evenements
 import org.assertj.core.api.AbstractAssert;
 import org.assertj.core.api.Assertions;
 
-public class RencontreAsserter extends AbstractAssert<RencontreAsserter, Rencontre> {
+import java.util.Optional;
 
-    private RencontreAsserter(Rencontre rencontre) {
+public class RencontreAsserter extends AbstractAssert<RencontreAsserter, Optional<Rencontre>> {
+
+    private RencontreAsserter(Optional<Rencontre> rencontre) {
         super(rencontre, RencontreAsserter.class);
     }
 
-    public static RencontreAsserter assertThat(Rencontre rencontre) {
+    public static RencontreAsserter assertThat(Optional<Rencontre> rencontre) {
         return new RencontreAsserter(rencontre);
     }
 
     public RencontreAsserter estOrganisee() {
-        Assertions.assertThat(actual.estOrganisee()).isTrue();
+        Assertions.assertThat(actual).isNotEmpty();
+        Assertions.assertThat(actual.get().estOrganisee()).isTrue();
         return this;
     }
 }

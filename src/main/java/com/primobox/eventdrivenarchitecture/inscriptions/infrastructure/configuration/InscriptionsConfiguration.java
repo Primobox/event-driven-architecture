@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class InscriptionsConfiguration {
 
     @Bean
-    public UseCase inscriptions(Celibataires celibataires, EmetteurDEvenementsDuDomaine emetteurDEvenementsDuDomaine) {
+    public UseCase inscription(Celibataires celibataires, EmetteurDEvenementsDuDomaine emetteurDEvenementsDuDomaine) {
         return new UseCaseEvenementiel(new Inscription(celibataires), emetteurDEvenementsDuDomaine);
     }
 }
