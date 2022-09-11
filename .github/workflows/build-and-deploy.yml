@@ -1,5 +1,7 @@
 name: Build and deploy app
 on:
+  schedule:
+    - cron:
   push:
     branches: [main]
 jobs:
@@ -12,9 +14,6 @@ jobs:
       - name: Build
         run: docker build -t primobox/event-driven-architecture:latest .
         shell: bash
-  run:
-    runs-on: self-hosted
-    steps:
       - name: Arrêt de l'application
         run: docker rm -v -f event-driven-architecture | true
         shell: bash
