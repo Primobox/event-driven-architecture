@@ -1,16 +1,14 @@
 name: Build and deploy app
 on:
+  schedule:
+    - cron: "30 23 * * *"
   push:
     branches: [main]
 jobs:
   build:
     runs-on: self-hosted
     steps:
-      - name: Checkout des sources
-        run: git clone https://github.com/Primobox/event-driven-architecture.git
-        shell: bash
       - name: Mise à jour des sources
-        if: always()
         run: git pull
         shell: bash
       - name: Build
