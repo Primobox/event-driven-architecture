@@ -21,5 +21,5 @@ jobs:
         shell: bash
       - name: Démarrage de l'application
         if: always()
-        run: docker run -d --name event-driven-architecture --rm -p 8080:8080 -e SPRING_SECURITY_USER_NAME=$SPRING_SECURITY_USER_NAME -e SPRING_SECURITY_USER_PASSWORD=$SPRING_SECURITY_USER_PASSWORD primobox/event-driven-architecture:latest
+        run: docker run -d --name event-driven-architecture -p 8080:8080 -e SPRING_SECURITY_USER_NAME=$SPRING_SECURITY_USER_NAME -e SPRING_SECURITY_USER_PASSWORD=$SPRING_SECURITY_USER_PASSWORD primobox/event-driven-architecture:latest
         shell: bash
