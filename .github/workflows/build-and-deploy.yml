@@ -10,3 +10,6 @@ jobs:
       - name: Display directory content
         run: ls -lah
         shell: bash
+      - name: Display current directory
+        run: pwd
+        shell: bash
