@@ -7,9 +7,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Checkout des sources
-        run: git clone https://github.com/Primobox/event-driven-architecture.git . | true
+        run: git clone https://github.com/Primobox/event-driven-architecture.git
         shell: bash
       - name: Mise à jour des sources
+        if: always()
         run: git pull
         shell: bash
       - name: Build
@@ -19,5 +20,6 @@ jobs:
         run: docker rm -v -f event-driven-architecture | true
         shell: bash
       - name: Démarrage de l'application
+        if: always()
         run: docker run -d event-driven-architecture --rm -p 8080:8080 -e SPRING_SECURITY_USER_NAME=$SPRING_SECURITY_USER_NAME -e SPRING_SECURITY_USER_PASSWORD=$SPRING_SECURITY_USER_PASSWORD primobox/event-driven-architecture:latest
         shell: bash
