@@ -1,7 +1,5 @@
 name: Build and deploy app
 on:
-  schedule:
-    - cron:
   push:
     branches: [main]
 jobs:
