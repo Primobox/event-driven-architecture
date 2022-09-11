@@ -1,15 +1,23 @@
 name: Build and deploy app
-on: [push]
+on:
+  push:
+    branches: [main]
 jobs:
   build:
     runs-on: self-hosted
     steps:
-      - name: Display the path
-        run: echo $PATH
+      - name: Checkout des sources
+        run: git clone https://github.com/Primobox/event-driven-architecture.git .
         shell: bash
-      - name: Display directory content
-        run: ls -lah
+      - name: Build
+        run: docker build -t primobox/event-driven-architecture:latest .
         shell: bash
-      - name: Display current directory
-        run: pwd
+  run:
+    runs-on: self-hosted
+    steps:
+      - name: Arrêt de l'application
+        run: docker rm -v -f event-driven-architecture | true
+        shell: bash
+      - name: Démarrage de l'application
+        run: docker run -d event-driven-architecture --rm -p 8080:8080 -e SPRING_SECURITY_USER_NAME=$SPRING_SECURITY_USER_NAME -e SPRING_SECURITY_USER_PASSWORD=$SPRING_SECURITY_USER_PASSWORD primobox/event-driven-architecture:latest
         shell: bash
