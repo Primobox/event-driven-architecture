@@ -33,7 +33,7 @@ public class SpringSecurityConfiguration {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173", "https://backoffice-event-driven-architecture.netlify.app")
+                        .allowedOrigins("http://localhost:5173", "https://meet-geek.netlify.app", "https://meet-geek-backoffice.netlify.app")
                         .allowedMethods("OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE");
             }
         };
