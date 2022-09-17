@@ -32,4 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 
-src/main/appengine/app.yaml
+src/main/webapp/backoffice/node_modules
+src/main/webapp/frontend/node_modules
