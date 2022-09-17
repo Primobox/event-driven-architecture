@@ -3,10 +3,14 @@ import {useState} from "react";
 import './Inscription.css';
 import {BASE_API_URL} from "./main";
 
-export const Inscription = ({setLogin}) => {
-    const [localLogin, setLocalLogin] = useState('');
+interface InscriptionProps {
+    setLogin: Function;
+}
+
+export const Inscription = ({setLogin}: InscriptionProps) => {
+    const [localLogin, setLocalLogin] = useState<string>('');
     const [erreurAffichee, setErreurAffichee] = useState(false);
-    const [erreur, setErreur] = useState<string>(null);
+    const [erreur, setErreur] = useState<string | null>(null);
 
     const inscription = () => {
         if (localLogin && localLogin.trim() !== '') {
