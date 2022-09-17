@@ -14,7 +14,6 @@ export const Inscription = ({setLogin}: InscriptionProps) => {
 
     const inscription = () => {
         if (localLogin && localLogin.trim() !== '') {
-            // Appel back
             fetch(BASE_API_URL + "/api/inscriptions", {
                 method: 'POST',
                 headers: {
@@ -29,6 +28,9 @@ export const Inscription = ({setLogin}: InscriptionProps) => {
                     setErreur('Vous ne pouvez pas vous inscrire avec ce login');
                     setErreurAffichee(true);
                 }
+            }).catch((exception: Error) => {
+                setErreur(exception.message);
+                setErreurAffichee(true);
             })
         } else {
             setErreur('Le login est obligatoire');
